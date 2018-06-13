@@ -7,7 +7,7 @@ module Messages
   
   def create_message(sender, recipient_id, token, subject, message)
     response = self.class.get(api_url("/messages"), body: { "sender": sender, "recipient_id": recipient_id, "token": token, "subject": subject, "stripped-text": message }, headers: { "authorization" => @auth_token })
-    puts response
+    response.success? puts "Message sent"
   end
 
 end
